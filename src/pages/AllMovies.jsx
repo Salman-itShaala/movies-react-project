@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AllMoviesHero from "../components/AllMoviesHero";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function AllMovies() {
   const [movies, setMovies] = useState([]);
@@ -36,7 +37,8 @@ function AllMovies() {
       <div className="grid grid-cols-4 justify-center gap-4 p-20">
         {movies.map((movie) => {
           return (
-            <div
+            <Link
+              to={`/movie/${movie.id}`}
               key={movie.id}
               className="p-4 border border-neutral-800 rounded-xl flex flex-col gap-2"
             >
@@ -50,7 +52,7 @@ function AllMovies() {
               </p>
               <p>Rating : {movie.vote_average}</p>
               <p>Total reviews : {movie.vote_count}</p>
-            </div>
+            </Link>
           );
         })}
       </div>
